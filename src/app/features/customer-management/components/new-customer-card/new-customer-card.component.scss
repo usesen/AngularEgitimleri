@@ -12,3 +12,45 @@
     }
   }
 }
+.custom-top-margin {
+  margin-top: 50px;
+}
+
+@media (max-width: 768px) {
+  .custom-top-margin {
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 576px) {
+  .custom-top-margin {
+    margin-top: 20px;
+  }
+}
+.button-spacing {
+  margin-right: 25px;
+}
+
+.action-button {
+  width: 80px;  // Sabit genişlik
+  margin-right: 25px;  // Sağ margin
+}
+
+.action-button:last-child {
+  margin-right: 0;  // Son butonda sağ margin olmasın
+}
+
+.row-spacing {
+  margin-bottom: 30px;  // Satırlar arası boşluk
+}
+.btn-orange {
+  background-color: #fd7e14;
+  border-color: #fd7e14;
+  color: white;
+}
+
+.btn-orange:hover {
+  background-color: #e76b00;
+  border-color: #e76b00;
+  color: white;
+}
