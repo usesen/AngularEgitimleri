@@ -37,3 +37,21 @@ Kullanıcı kimlik doğrulaması ve yetkilendirme süreçlerini yönetmek için 
 Angular uygulamalarını production build (prod build) haline getirmek ve sunucuya deploy etmeyi öğrenmek önemli bir beceridir.
 15. Responsive Design
 Uygulamanın mobil uyumlu olması için CSS Media Queries, Angular Flex Layout veya Bootstrap gibi kütüphaneleri kullanarak duyarlı (responsive) tasarım yapmayı öğrenmen gerekir.
+# Angular Dersleri
+
+## Proje Açıklaması
+Bu proje, **Angular** çerçevesinde menüler, componentler, routing (yönlendirme) ve guard (koruma) yapılarını içeren bir eğitim uygulamasıdır. Proje, Angular ile dinamik web uygulamaları geliştirmek isteyenler için temel bir örnek teşkil etmektedir.
+
+## Başlangıç
+Bu adımları izleyerek projeyi kendi bilgisayarınıza kurabilirsiniz.
+
+### Gereksinimler
+- **Node.js**: Projenin çalışması için en son sürüm Node.js yüklü olmalıdır.
+- **Angular CLI**: Angular projeleri oluşturmak ve yönetmek için gereklidir.
+
+### Kurulum
+Projeyi yerel bilgisayarınıza kurmak için aşağıdaki adımları takip edin:
+
+1. Bu projeyi klonlayın:
+   ```bash
+   git clone https://github.com/kullanici-adiniz/angular-dersleri.git
