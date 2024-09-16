@@ -24,8 +24,11 @@
       </button>
     </div>
     <div class="col-md-4">
-      <button class="btn btn-primary w-100">
-        <i class="bi bi-plus-circle me-2"></i>Yeni Kayıt
+      <button
+        class="btn btn-primary w-100"
+        (click)="openNewCustomerModal(newCustomerModal)"
+      >
+        Yeni Kayıt
       </button>
     </div>
   </div>
@@ -218,3 +221,312 @@
     </li>
   </ul>
 </nav>
+
+<!-- Add this modal at the end of the file -->
+<ng-template #newCustomerModal let-modal>
+  <div class="modal-header bg-light">
+    <div class="d-flex justify-content-between align-items-center w-100">
+      <h4 class="modal-title" id="modal-basic-title">Yeni Müşteri</h4>
+      <button
+        type="button"
+        class="btn btn-danger rounded-circle d-flex justify-content-center align-items-center"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+        style="width: 30px; height: 30px"
+      >
+        <i class="bi bi-x-lg text-white"></i>
+      </button>
+    </div>
+  </div>
+  <div class="modal-body">
+    <form #customerForm="ngForm">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="firstName" class="form-label required">Ad</label>
+          <input
+            type="text"
+            class="form-control"
+            id="firstName"
+            [(ngModel)]="newCustomer.firstName"
+            name="firstName"
+            required
+            pattern="^[a-zA-ZğüşıöçĞÜŞİÖÇ\s]{2,30}$"
+            #firstNameInput="ngModel"
+          />
+          <div
+            *ngIf="
+              firstNameInput.invalid &&
+              (firstNameInput.dirty || firstNameInput.touched)
+            "
+            class="text-danger"
+          >
+            <small *ngIf="firstNameInput.errors?.['pattern']"
+              >Geçerli bir ad giriniz (sadece harfler, 2-30 karakter).</small
+            >
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="lastName" class="form-label required">Soyad</label>
+          <input
+            type="text"
+            class="form-control"
+            id="lastName"
+            [(ngModel)]="newCustomer.lastName"
+            name="lastName"
+            required
+            pattern="^[a-zA-ZğüşıöçĞÜŞİÖÇ\s]{2,30}$"
+            #lastNameInput="ngModel"
+          />
+          <div
+            *ngIf="
+              lastNameInput.invalid &&
+              (lastNameInput.dirty || lastNameInput.touched)
+            "
+            class="text-danger"
+          >
+            <small *ngIf="lastNameInput.errors?.['pattern']"
+              >Geçerli bir soyad giriniz (sadece harfler, 2-30 karakter).</small
+            >
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="email" class="form-label required">E-posta</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            [(ngModel)]="newCustomer.email"
+            name="email"
+            required
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+            #emailInput="ngModel"
+          />
+          <div
+            *ngIf="
+              emailInput.invalid && (emailInput.dirty || emailInput.touched)
+            "
+            class="text-danger"
+          >
+            <small *ngIf="emailInput.errors?.['required']"
+              >E-posta adresi gereklidir.</small
+            >
+            <small *ngIf="emailInput.errors?.['pattern']"
+              >Geçerli bir e-posta adresi giriniz.</small
+            >
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="phone" class="form-label required">Telefon</label>
+          <input
+            type="tel"
+            class="form-control"
+            id="phone"
+            [(ngModel)]="newCustomer.phone"
+            name="phone"
+            required
+            pattern="^(\+90|0)?\s?5[0-9]{2}\s?[0-9]{3}\s?[0-9]{2}\s?[0-9]{2}$"
+            #phoneInput="ngModel"
+          />
+          <div
+            *ngIf="
+              phoneInput.invalid && (phoneInput.dirty || phoneInput.touched)
+            "
+            class="text-danger"
+          >
+            <small *ngIf="phoneInput.errors?.['required']"
+              >Telefon numarası gereklidir.</small
+            >
+            <small *ngIf="phoneInput.errors?.['pattern']"
+              >Geçerli bir telefon numarası giriniz (örn: 05XX XXX XX
+              XX).</small
+            >
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="address" class="form-label">Adres</label>
+        <textarea
+          class="form-control"
+          id="address"
+          [(ngModel)]="newCustomer.address"
+          name="address"
+          rows="2"
+          pattern="^[a-zA-Z0-9ğüşıöçĞÜŞİÖÇ\s,./:()-]{5,100}$"
+          #addressInput="ngModel"
+        ></textarea>
+        <div
+          *ngIf="
+            addressInput.invalid && (addressInput.dirty || addressInput.touched)
+          "
+          class="text-danger"
+        >
+          <small *ngIf="addressInput.errors?.['pattern']"
+            >Geçerli bir adres giriniz (5-100 karakter, özel karakterler:
+            ,./:()-)</small
+          >
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <label for="city" class="form-label">Şehir</label>
+          <input
+            type="text"
+            class="form-control"
+            id="city"
+            [(ngModel)]="newCustomer.city"
+            name="city"
+            pattern="^[a-zA-ZğüşıöçĞÜŞİÖÇ\s]{2,30}$"
+            #cityInput="ngModel"
+          />
+          <div
+            *ngIf="cityInput.invalid && (cityInput.dirty || cityInput.touched)"
+            class="text-danger"
+          >
+            <small *ngIf="cityInput.errors?.['pattern']"
+              >Geçerli bir şehir adı giriniz (sadece harfler, 2-30
+              karakter).</small
+            >
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="country" class="form-label">Ülke</label>
+          <input
+            type="text"
+            class="form-control"
+            id="country"
+            [(ngModel)]="newCustomer.country"
+            name="country"
+            pattern="^[a-zA-ZğüşıöçĞÜŞİÖÇ\s]{2,30}$"
+            #countryInput="ngModel"
+          />
+          <div
+            *ngIf="
+              countryInput.invalid &&
+              (countryInput.dirty || countryInput.touched)
+            "
+            class="text-danger"
+          >
+            <small *ngIf="countryInput.errors?.['pattern']"
+              >Geçerli bir ülke adı giriniz (sadece harfler, 2-30
+              karakter).</small
+            >
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="postalCode" class="form-label">Posta Kodu</label>
+          <input
+            type="text"
+            class="form-control"
+            id="postalCode"
+            [(ngModel)]="newCustomer.postalCode"
+            name="postalCode"
+            pattern="^[0-9]{5}$"
+            maxlength="5"
+            #postalCodeInput="ngModel"
+          />
+          <div
+            *ngIf="
+              postalCodeInput.invalid &&
+              (postalCodeInput.dirty || postalCodeInput.touched)
+            "
+            class="text-danger"
+          >
+            <small *ngIf="postalCodeInput.errors?.['pattern']"
+              >Geçerli bir posta kodu giriniz (5 haneli sayı).</small
+            >
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="company" class="form-label">Şirket</label>
+          <input
+            type="text"
+            class="form-control"
+            id="company"
+            [(ngModel)]="newCustomer.company"
+            name="company"
+            pattern="^[a-zA-Z0-9ğüşıöçĞÜŞİÖÇ\s&.]{2,50}$"
+            #companyInput="ngModel"
+          />
+          <div
+            *ngIf="
+              companyInput.invalid &&
+              (companyInput.dirty || companyInput.touched)
+            "
+            class="text-danger"
+          >
+            <small *ngIf="companyInput.errors?.['pattern']"
+              >Geçerli bir şirket adı giriniz (2-50 karakter, özel karakterler:
+              &.).</small
+            >
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="position" class="form-label">Pozisyon</label>
+          <input
+            type="text"
+            class="form-control"
+            id="position"
+            [(ngModel)]="newCustomer.position"
+            name="position"
+            pattern="^[a-zA-ZğüşıöçĞÜŞİÖÇ\s]{2,30}$"
+            #positionInput="ngModel"
+          />
+          <div
+            *ngIf="
+              positionInput.invalid &&
+              (positionInput.dirty || positionInput.touched)
+            "
+            class="text-danger"
+          >
+            <small *ngIf="positionInput.errors?.['pattern']"
+              >Geçerli bir pozisyon giriniz (sadece harfler, 2-30
+              karakter).</small
+            >
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="notes" class="form-label">Notlar</label>
+        <textarea
+          class="form-control"
+          id="notes"
+          [(ngModel)]="newCustomer.notes"
+          name="notes"
+          rows="2"
+          pattern="^[a-zA-Z0-9ğüşıöçĞÜŞİÖÇ\s,.!?()-]{0,200}$"
+          #notesInput="ngModel"
+        ></textarea>
+        <div
+          *ngIf="notesInput.invalid && (notesInput.dirty || notesInput.touched)"
+          class="text-danger"
+        >
+          <small *ngIf="notesInput.errors?.['pattern']"
+            >Geçerli notlar giriniz (0-200 karakter, özel karakterler:
+            ,.!?()-)</small
+          >
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer bg-light">
+    <button
+      type="button"
+      class="btn btn-outline-secondary me-2"
+      (click)="resetForm()"
+    >
+      Temizle
+    </button>
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="saveCustomer()"
+      [disabled]="customerForm.form.invalid"
+    >
+      Kaydet
+    </button>
+  </div>
+</ng-template>

@@ -54,3 +54,7 @@
   border-color: #e76b00;
   color: white;
 }
+.form-label::after {
+  content: " *";
+  color: red;
+}
