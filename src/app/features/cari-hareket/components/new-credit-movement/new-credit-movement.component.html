@@ -1,1 +1,68 @@
 <p>new-credit-movement works!</p>
+
+<div class="container">
+  <form>
+    <div class="row mb-3">
+      <!-- İlk satır, tek sütun -->
+      <div class="col-12">
+        <h4>Filtreleme</h4>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="startDate">Başlangıç Tarihi</label>
+              <input type="date" class="form-control" id="startDate">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="endDate">Bitiş Tarihi</label>
+              <input type="date" class="form-control" id="endDate">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="amount">Tutar</label>
+              <input type="number" class="form-control" id="amount">
+            </div>
+          </div>
+          <div class="col-md-3 d-flex align-items-end">
+            <button type="button" class="btn btn-primary me-2">Filtrele</button>
+            <button type="button" class="btn btn-success">Yeni Kayıt</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <!-- İkinci satır: Ekstre hareketleri tablosu -->
+      <div class="col-12">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Tarih</th>
+              <th>İşlem Türü</th>
+              <th>Açıklama</th>
+              <th>Tutar</th>
+              <th>Bakiye Borç</th>
+              <th>Bakiye Alacak</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Örnek satır, gerçek verilerle doldurulacak -->
+            <tr>
+              <td>2023-05-01</td>
+              <td>Satış</td>
+              <td>Ürün A Satışı</td>
+              <td>1000 TL</td>
+              <td>0 TL</td>
+              <td>1000 TL</td>
+            </tr>
+            <!-- Daha fazla satır eklenebilir -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Gönder</button>
+  </form>
+</div>

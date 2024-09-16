@@ -1,0 +1,14 @@
+.new-customer-card {
+  .section-one {
+    .flex-container {
+      display: flex;
+      justify-content: space-between;
+
+      .flex-item {
+        flex-basis: calc(
+          33.33% - 20px
+        ); // 3 eşit parçaya böler, aralarında biraz boşluk bırakır
+      }
+    }
+  }
+}
