@@ -58,3 +58,12 @@
   content: " *";
   color: red;
 }
+.modal-header {
+  background-color: #f8f9fa;
+  border-bottom: none;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
+}
